@@ -12,14 +12,40 @@ function setup() {
 }
 
 function draw() {
-  background(255);
+	// MUST HAVE BACKGROUND INSIDE LOOP
+  background(0);
 
   // Get the overall volume (between 0 and 1.0)
   var vol = mic.getLevel();
-  fill(0, 255, 0);
-  stroke(0);
 
   // Draw an ellipse with height based on volume
-  var h = map(vol, 0, 1, height/4, height);
-  ellipse(width/2, height/2, h, h);
+	greenMin = height/8;
+	blueMin = height/8;
+	pinkMin = height/8;
+	yellowMin = height/8;
+
+	greenX = width/2-h1;
+  var h1 = map(vol, 0, 1, greenMin, height);
+	fill(0, 255, 0);
+	noStroke();
+  ellipse(width/2-h1, height/4, h1, h1);
+
+
+	var h2 = map(vol, 0, 1, blueMin, height);
+	blueX = width/2+h2;
+	fill(0, 0, 255);
+	noStroke();
+	ellipse(blueX, height/4, h2, h2);
+
+	var h3 = map(vol, 0, 1, pinkMin, height);
+	pinkX = width/2-h3;
+	fill(255, 0, 255);
+	noStroke();
+	ellipse(pinkX, height/4*3, h2, h2);
+
+	var h4 = map(vol, 0, 1, yellowMin, height);
+	yellowX = width/2+h4;
+	fill(255, 255, 0);
+	noStroke();
+	ellipse(yellowX, height/4*3, h2, h2);
 }
